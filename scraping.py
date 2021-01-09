@@ -4,10 +4,10 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 
 # Path to chromedriver (macOS users only)
-!which chromedriver
+# !which chromedriver
 
 # Set the executable path and initialize the chrome browser in splinter
-executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
+executable_path = {'executable_path': '/Users/death/.wdm/drivers/chromedriver/win32/87.0.4280.88/chromedriver'}
 browser = Browser('chrome', **executable_path)
 
 # Visit the mars nasa news site
