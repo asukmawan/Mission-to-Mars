@@ -1,3 +1,5 @@
 index.html
 Splinter_Setup.ipynb
-.ipynb_checkpoints/Splinter_Setup-checkpoint.ipynb
+debug.log
+.ipynb_checkpoints
+debug.log
