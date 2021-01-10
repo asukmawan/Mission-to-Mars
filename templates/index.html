@@ -22,7 +22,7 @@
         <!-- The "btn btn-primary btn-lg" classes are also part of Bootstrap's button component (we're using Bootstrap to create a button instead of the <button /> tag and element). -->
         <!-- There are three classes here because we're telling Bootstrap that we're using a button (btn), it's the primary color (btn-primary), and it's large (btn-lg). -->
         <!-- We've added a role="button" role so that the webpage knows this link functions as a button, not as a regular hyperlink. This just boils down to aesthetics, though. -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        <p><a class="btn btn-info btn-xs" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
       <!-- Add section for Mars News -->
       <!-- Bootstrap Grid is a very useful tool because it provides extremely flexible and customizable layouts for all of your HTML components. -->
@@ -77,10 +77,10 @@
       <div class="container text-center">
         <h2>Mars Hemispheres</h2>
         {% for hemisphere in mars.hemispheres %}
-        <div class="col-md-6">                          
+        <div class="col-md-3">                          
           <img 
             src="{{hemisphere.image_url}}"
-            class="img-responsive"
+            class="img-thumbnail"            
             alt="Responsive image"
           />
           <h3>{{hemisphere.title}}</h3>  
