@@ -29,7 +29,7 @@
       <!-- It consists of a column and row layout with up to 12 columns per row.--> 
       <!-- By adding a class of "row" we're telling Bootstrap that we're about to use the grid system and everything within this div will be horizontally aligned.  -->
       <!-- The id "mars-news" helps us select it later if we want to customize it later with CSS. -->
-      <div class="row" id="mars-news">
+      <div class="container text-center" id="mars-news" style="background-color: lightslategray;">
         <!-- the below tag specifies how many columns this component will be using. We want the article and summary to span the width of the page, so we'll use all 12 columns. -->
         <!-- The col-md-12 means that we want to use 12 columns scaled to a midsize desktop display. -->
         <div class="col-md-12">
@@ -74,10 +74,10 @@
           </div>
         </div>
       </div>
-      <div class="container text-center">
+      <div class="container text-center" style="background-color: lightslategray;">
         <h2>Mars Hemispheres</h2>
         {% for hemisphere in mars.hemispheres %}
-        <div class="col-md-3">                          
+        <div class="col-md-3" style="background-color: lightslategray;">                          
           <img 
             src="{{hemisphere.image_url}}"
             class="img-thumbnail"            
