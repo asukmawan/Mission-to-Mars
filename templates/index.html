@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars</title>
+    <!-- use Bootstrap components to enhance the HTML and CSS of the index.html file. -->
+    <!-- the URL in the href attribute below is the CDN for the Bootstrap version we'll be using -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Add Jumbotron to Header -->
+      <div class="jumbotron text-center">
+        <h1>Mission to Mars</h1>
+        <!-- Add a button to activate scraping script -->
+        <!-- The "btn btn-primary btn-lg" classes are also part of Bootstrap's button component (we're using Bootstrap to create a button instead of the <button /> tag and element). -->
+        <!-- There are three classes here because we're telling Bootstrap that we're using a button (btn), it's the primary color (btn-primary), and it's large (btn-lg). -->
+        <!-- We've added a role="button" role so that the webpage knows this link functions as a button, not as a regular hyperlink. This just boils down to aesthetics, though. -->
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+      <!-- Add section for Mars News -->
+      <!-- Bootstrap Grid is a very useful tool because it provides extremely flexible and customizable layouts for all of your HTML components. -->
+      <!-- It consists of a column and row layout with up to 12 columns per row.--> 
+      <!-- By adding a class of "row" we're telling Bootstrap that we're about to use the grid system and everything within this div will be horizontally aligned.  -->
+      <!-- The id "mars-news" helps us select it later if we want to customize it later with CSS. -->
+      <div class="row" id="mars-news">
+        <!-- the below tag specifies how many columns this component will be using. We want the article and summary to span the width of the page, so we'll use all 12 columns. -->
+        <!-- The col-md-12 means that we want to use 12 columns scaled to a midsize desktop display. -->
+        <div class="col-md-12">
+          <!-- nest in two more tags: "media" and "media-body" -->
+          <!-- this tells Bootstrap that we want our content to be displayed as media, and then we insert the media within the body. Bootstrap already has the custom CSS set up for these classes.  -->
+          <div class="media">
+            <div class="media-body">
+              <!-- Add Article Title and Summary from the Scraped site -->
+              <h2>Latest Mars News</h2>
+              <!-- The mars.news_title follows the syntax document.variable_name: In our scraping code, we saved the title of the article we scraped to the "news_title" variable and stored that in the mars Mongo document. -->
+              <!-- When Flask encounters these curly brackets, it then looks to the string (in this case, a variable) stored within them and replaces the variable with the data it holds. -->
+              <h4 class="media-heading">{{ mars.news_title }}</h4>
+              <p>{{ mars.news_paragraph }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section for Featured Image and Facts table -->
+      <!-- Each new item we're inserting now is on its own row, so the very first div will have a class of "row." -->
+      <!-- We also added an id for later customization: “mars-featured-image”. This is so we can reference it using CSS if we want to fine-tune the appearance later. -->
+      <div class="row" id="mars-featured-image">
+        <div class="col-md-8">
+          <h2>Featured Mars Image</h2>
+          <!-- The next line inserts an image using the <img /> tag, but the tag alone won't actually insert the image.  -->
+          <!-- We also need to include the source, or link to where the image is. We do this by adding src="{{ mars.featured_image }}"—notice that we're once again using Flask's ability to interpret strings here. -->
+          <!-- When we add class="img-responsive," we're using another built-in Bootstrap component that makes the image responsive. That means that the size of the image varies depending on the browser used, without us having to add extra code to do so. -->
+          <!-- The last portion, alt="Responsive image," adds alt-text to our image. Alt-text is just text that will appear if the image doesn't load, or will be read by a screen reader if one is used. The benefit of alt-text lies in accessibility: visually impaired users will have the opportunity to better understand a webpage without actually viewing the image on it. -->
+          <img
+            src="{{mars.featured_image }}"
+            class="img-responsive"
+            alt="Responsive image"
+          />
+        </div>
+        <div class="col-md-4">
+          <!-- Mars Facts -->
+          <!-- When we add the table of facts, we want it to be on the same row as the featured image. -->
+          <!-- This means that we want it to be nested inside the first level of <div /> tags, but at the same level as the second set --> 
+          <div class="row" id="mars-facts">
+            <h4>Mars Facts</h4>
+            <!-- The line{{ mars.facts | safe }} accomplishes two tasks: it first references the facts table in the mars document, and it also tells the web browser that this code doesn't contain anything malicious. -->
+            {{ mars.facts | safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
